@@ -1,0 +1,32 @@
+.course_box {
+  width: 100%;
+  margin-top: -250px;
+}
+.course_box .my_picker {
+  margin-bottom: 20px;
+}
+.course_box .my_input {
+  margin-left: 0;
+  padding-left: 32px;
+  text-align: right;
+}
+.course_box .my_input input {
+  padding-right: 60px;
+}
+.course_box .my_btn {
+  margin-top: 20px;
+}
+.course_box .my_qrcode {
+  border: 1px solid #d8d8d8;
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  margin-top: -150px;
+}
+.course_box .at-curtain__btn-close {
+  width: 80px;
+  height: 80px;
+  bottom: -110px;
+  margin-left: -40px;
+}

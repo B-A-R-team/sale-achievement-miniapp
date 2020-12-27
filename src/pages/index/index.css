@@ -1,0 +1,22 @@
+page {
+  background-color: #7d7dd1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+}
+page .login_box {
+  margin-top: -150px;
+}
+page .login_box .avatar {
+  margin-bottom: 50px;
+}
+page .login_box .login_btn {
+  border-radius: 15px;
+}
+page .text {
+  position: absolute;
+  bottom: 80px;
+  color: #fff;
+  font-size: 36px;
+}
