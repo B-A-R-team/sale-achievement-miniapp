@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Button } from '@tarojs/components'
 import {
     AtForm,
@@ -6,8 +6,10 @@ import {
     AtButton
 } from 'taro-ui'
 import myRequest from '../../api/myRequest'
+import Taro from '@tarojs/taro'
 import './customer.less'
-const Customer = () => {
+const Customer = (props) => {
+    console.log(props);
     const [customerInfo, setCustomerInfo] = useState({
         name: '',
         phone: '',
@@ -15,11 +17,21 @@ const Customer = () => {
         school: '',
         age: '',
         grade: '',
-        course_id: '',
-        is_paid: '',
-        money: '',
-        staff_id: ''
+        course_id: 1,
+        is_paid: 'false',
+        money: '2000',
+        staff_id: '2020'
     })
+    useEffect(() => {
+        console.log(11);
+        customerInfo.course_id = 3
+        myRequest('/api/v1/course', {}).then(res => {
+            console.log(res.data);
+            const currentItem = res.data.find(item => item.id === customerInfo.course_id)
+            console.log(customerInfo.course_id);
+            console.log(currentItem.price);
+        })
+    }, [])
     //  const inputArr = new Array(6)
     const inputArr = [
         { name: 'name', cname: '姓名' },
@@ -32,7 +44,36 @@ const Customer = () => {
     ]
 
     const handleBtn = () => {
-        console.log(customerInfo);
+
+        let titleArr = []
+        let titleStr = ''
+        for (const key in customerInfo) {
+            if (customerInfo[key].length <= 0) {
+                titleArr.push(key)
+            }
+        }
+        titleArr.forEach((titleItem, index) => {
+            const currItem = inputArr.find(inputItem => inputItem.name === titleItem)
+            if (index < titleArr.length - 1) {
+                titleStr = titleStr + currItem.cname + '，'
+                return
+            }
+            titleStr += currItem.cname
+        })
+        if (titleStr.length > 1) {
+            Taro.showToast({
+                title: titleStr + '不能为空',
+                icon: 'none',
+                duration: 1500
+            })
+        } else {
+            Taro.showModal({
+                title: '支付',
+                content: customerInfo.money + '元'
+            })
+        }
+
+
     }
     return (
         <AtForm
@@ -51,9 +92,9 @@ const Customer = () => {
                             placeholder={'请输入' + item.cname}
                             value={customerInfo[item.name]}
                             onChange={(e) => {
-                                 customerInfo[item.name] = e
+                                customerInfo[item.name] = e
                                 //  console.log(customerInfo);
-                                 return setCustomerInfo(customerInfo)
+                                return setCustomerInfo(customerInfo)
                             }}
                         />
                     )
