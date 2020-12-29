@@ -1,16 +1,58 @@
-page{
-    // justify-content: start;
-    align-items: flex-start;
-    .pay_form {
-        width: 100%;
-        // margin-top: -250px;
-        .my_input {
-            border: 2px solid rgb(232, 232, 232);
-            margin-left: 0;
-            padding-left: 32px;
-        }
-        .my_btn {
-            margin-top: 20px;
-        }
+page {
+  // justify-content: start;
+  align-items: flex-start;
+  padding: 1rem;
+  .pay_form {
+    width: 100%;
+    .group_title {
+      border-left: 6rpx solid #67be79;
+      padding-left: 10rpx;
+      margin-right: 10rpx;
+
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
     }
+    .input_group {
+      border: 2rpx solid #dadada;
+      border-radius: 10rpx;
+      margin-bottom: 1rem;
+
+      .at-input {
+        margin-left: 0;
+        padding-left: 1rem;
+        .at-input__title {
+          width: 4rem;
+        }
+      }
+      .my_input {
+        border-radius: 10rpx;
+      }
+
+      .my_input:first-child {
+        border-radius: 10rpx 10rpx 0 0;
+        border-bottom: 2rpx solid #dadadae5;
+      }
+      .my_input:last-child {
+        border-radius: 0 0 10rpx 10rpx;
+        border-top: 2rpx solid #dadadae5;
+      }
+      .my_input.one_line {
+        border-top: 0;
+        border-bottom: 0;
+        border-radius: 10rpx;
+      }
+    }
+    // .my_input {
+    //   border: 2px solid rgb(232, 232, 232);
+    //   margin-bottom: 0.5rem;
+    //   border-radius: 10rpx;
+    //   margin-left: 0;
+    //   padding-left: 32px;
+    // }
+    .my_btn {
+      margin-top: 50rpx;
+    }
+  }
 }

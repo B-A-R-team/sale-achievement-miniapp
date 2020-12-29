@@ -5,5 +5,7 @@
  * @FilePath: \sale-achievement-miniapp\src\pages\register\register.config.js
  */
 export default {
-    navigationBarTitleText: '注册'
-}
+  navigationBarTitleText: "绑定工号",
+  navigationBarBackgroundColor: "#67be79",
+  navigationBarTextStyle: "white"
+};

@@ -6,8 +6,8 @@
  */
 export default {
   pages: [
-    'pages/customer/customer',
     'pages/index/index',
+    'pages/customer/customer',
     'pages/course/course',
     'pages/register/register',
   ],

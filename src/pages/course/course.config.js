@@ -5,5 +5,7 @@
  * @FilePath: \sale-achievement-miniapp\src\pages\course\course.config.js
  */
 export default {
-    navigationBarTitleText: '选择课程'
-}
+  navigationBarTitleText: "选择课程",
+  navigationBarBackgroundColor: "#67be79",
+  navigationBarTextStyle: "white"
+};

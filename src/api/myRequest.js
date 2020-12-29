@@ -5,7 +5,7 @@
  * @FilePath: \sale-achievement-miniapp\src\api\myRequest.js
  */
 import Taro from '@tarojs/taro'
-const BASE_URL = 'https://barteam.cn:2992'
+const BASE_URL = 'https://www.barteam.cn:2992'
 
 const myRequest = (
     url,

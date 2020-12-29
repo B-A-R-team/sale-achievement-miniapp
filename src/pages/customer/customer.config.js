@@ -5,5 +5,7 @@
  * @FilePath: \sale-achievement-miniapp\src\pages\customer\customer.config.js
  */
 export default {
-    navigationBarTitleText: '客户'
-  }
+  navigationBarTitleText: "填写信息并支付",
+  navigationBarBackgroundColor: "#67be79",
+  navigationBarTextStyle: "white"
+};

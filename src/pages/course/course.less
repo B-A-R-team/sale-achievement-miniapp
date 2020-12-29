@@ -1,34 +1,68 @@
-.course_box {
-    width: 100%;
-    margin-top: -250px;
+page {
+  align-items: flex-start;
+  padding-top: 1rem;
+  .at-card__header {
+    display: none;
+  }
+  .staff_info {
+    background-color: #fff;
+    box-shadow: 0 0 18rpx #e6e6e6;
+    margin-bottom: 1rem;
+    border: none;
+    .info_container {
+      display: flex;
+      align-items: center;
+      .nickname {
+        margin-left: 1rem;
+        font-weight: bold;
+      }
+    }
+  }
+  .course_box {
+    box-shadow: 0 0 18rpx #e6e6e6;
+    border: none;
+    .at-card__content {
+      padding-top: 0;
+    }
+    .at-list::after {
+      border: none;
+    }
+    .at-list__item::after {
+      border: none;
+    }
+    .at-list__item {
+      border-bottom: 1px solid #cfcfcf;
+      padding-left: 0;
+    }
+
     .my_picker {
-        margin-bottom: 20px;
-        // border: 1px solid black;
+      margin-bottom: 20px;
     }
     .my_input {
-        // border: 2px solid rgb(232, 232, 232);    
-        margin-left: 0;
-        padding-left: 32px;
-        text-align: right;
-        input {
-            padding-right: 60px;
-        }
+      // border: 2px solid rgb(232, 232, 232);
+      margin-left: 0;
+      padding-left: 32px;
+      text-align: right;
+      input {
+        padding-right: 60px;
+      }
     }
     .my_btn {
-        margin-top: 20px;
+      margin-top: 20px;
     }
     .my_qrcode {
-        border: 1px solid rgb(216, 216, 216);
-        background-color: #fff;
-        border-radius: 20px;
-        overflow: hidden;
-        width: 100%;
-        margin-top: -150px;
+      border: 1px solid rgb(216, 216, 216);
+      background-color: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      width: 100%;
+      margin-top: -150px;
     }
     .at-curtain__btn-close {
-        width: 80px;
-        height: 80px;
-        bottom: -110px;
-        margin-left: -40px;
+      width: 80px;
+      height: 80px;
+      bottom: -110px;
+      margin-left: -40px;
     }
+  }
 }
