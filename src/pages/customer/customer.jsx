@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button } from "@tarojs/components";
-import { AtForm, AtInput, AtButton } from "taro-ui";
+import { View, Text } from "@tarojs/components";
+import { AtInput, AtButton } from "taro-ui";
 import myRequest from "../../api/myRequest";
-import Taro from "@tarojs/taro";
+import Taro, { useRouter } from "@tarojs/taro";
 import "./customer.less";
-const Customer = props => {
-  console.log(props);
+
+const Customer = () => {
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
     phone: "",
@@ -13,23 +13,31 @@ const Customer = props => {
     school: "",
     age: "",
     grade: "",
-    course_id: 1,
+    course_id: 0,
     is_paid: "false",
-    money: "2000",
-    staff_id: "2020"
+    money: 0,
+    staff_id: "0"
   });
+  const router = useRouter();
+
   useEffect(() => {
-    console.log(11);
-    customerInfo.course_id = 3;
+    Taro.hideHomeButton();
+    const courseId = +router.params.cid;
+    const staffId = router.params.sid;
+
+    console.log(courseId, staffId);
+
     myRequest("/api/v1/course", {}).then(res => {
-      console.log(res.data);
-      const currentItem = res.data.find(
-        item => item.id === customerInfo.course_id
-      );
-      console.log(customerInfo.course_id);
-      console.log(currentItem.price);
+      const { price } = res.data.find(item => item.id === courseId);
+      setCustomerInfo({
+        ...customerInfo,
+        course_id: courseId,
+        staff_id: staffId,
+        money: price
+      });
     });
   }, []);
+
   //  const inputArr = new Array(6)
   const inputArr = [
     { name: "name", cname: "姓名" },
@@ -40,6 +48,23 @@ const Customer = props => {
     { name: "grade", cname: "年级" },
     { name: "money", cname: "金额" }
   ];
+
+  const submitCustomer = async () => {
+    const { code, message } = await myRequest("/api/v1/customer", {
+      method: "POST",
+      data: { ...customerInfo }
+    });
+    if (code === 200) {
+      Taro.redirectTo({
+        url: "/pages/finish/finish"
+      });
+      return;
+    }
+    Taro.showModal({
+      title: "提交失败",
+      content: message
+    });
+  };
 
   const handleBtn = () => {
     let titleArr = [];
@@ -64,9 +89,18 @@ const Customer = props => {
         duration: 1500
       });
     } else {
+      // Taro.showModal({
+      //   title: "支付",
+      //   content: customerInfo.money + "元"
+      // });
       Taro.showModal({
-        title: "支付",
-        content: customerInfo.money + "元"
+        title: "提示",
+        content: "确认提交信息？",
+        success: function(res) {
+          if (res.confirm) {
+            submitCustomer();
+          }
+        }
       });
     }
   };
@@ -111,7 +145,7 @@ const Customer = props => {
         openType={"getUserInfo"}
         onGetUserInfo={handleBtn}
       >
-        提交并支付
+        提交
       </AtButton>
     </View>
   );

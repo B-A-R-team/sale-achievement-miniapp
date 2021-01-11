@@ -6,15 +6,16 @@
  */
 export default {
   pages: [
-    'pages/index/index',
-    'pages/customer/customer',
-    'pages/course/course',
-    'pages/register/register',
+    "pages/index/index",
+    "pages/customer/customer",
+    "pages/course/course",
+    "pages/register/register",
+    "pages/finish/finish"
   ],
   window: {
-    backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#fff',
-    navigationBarTitleText: 'WeChat',
-    navigationBarTextStyle: 'black'
+    backgroundTextStyle: "light",
+    navigationBarBackgroundColor: "#fff",
+    navigationBarTitleText: "WeChat",
+    navigationBarTextStyle: "black"
   }
-}
+};
